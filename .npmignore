@@ -1,0 +1,21 @@
+# Don't publish test or development files to npm
+node_modules/
+.git/
+.github/
+.vscode/
+.idea/
+
+# Documentation that's not needed in package
+PUBLISHING.md
+.gitignore
+.npmignore
+
+# Source files (only ship dist)
+src/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

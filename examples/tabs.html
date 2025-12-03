@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX Class Manager - Tab Example</title>
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+    <script src="../dist/class-manager.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: white;
+            border-bottom: 2px solid white;
+            color: #007bff;
+            font-weight: bold;
+            transform: translateY(2px);
+        }
+        
+        .content {
+            padding: 20px;
+            background: white;
+            border: 2px solid #ddd;
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body hx-ext="class-manager">
+    <h1>Tab System Example</h1>
+    <p>Click tabs to switch between them. The server removes 'active' from all tabs, then adds it to the selected one.</p>
+    
+    <div class="tabs">
+        <div class="tab active" data-tab="1">Home</div>
+        <div class="tab" data-tab="2">Profile</div>
+        <div class="tab" data-tab="3">Settings</div>
+    </div>
+    
+    <div class="content">
+        <button hx-get="/api/tabs/1" hx-swap="none">Switch to Home</button>
+        <button hx-get="/api/tabs/2" hx-swap="none">Switch to Profile</button>
+        <button hx-get="/api/tabs/3" hx-swap="none">Switch to Settings</button>
+        
+        <h3>How it works:</h3>
+        <p>When you click a button, the server returns:</p>
+        <pre><code>&lt;div 
+    class-remove=".tab:active"
+    class-add=".tab[data-tab='X']:active"
+&gt;&lt;/div&gt;</code></pre>
+        
+        <p><strong>Note:</strong> This is a static example. In production, your server would return the appropriate HTML.</p>
+    </div>
+    
+    <script>
+        // Mock server responses for demo
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            evt.preventDefault();
+            
+            const url = evt.detail.path;
+            const tabId = url.match(/\/(\d+)$/)[1];
+            
+            const response = `<div class-remove=".tab:active" class-add=".tab[data-tab='${tabId}']:active"></div>`;
+            
+            setTimeout(() => {
+                htmx.trigger(document.body, 'htmx:beforeSwap', {
+                    xhr: { responseText: response },
+                    target: document.body
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

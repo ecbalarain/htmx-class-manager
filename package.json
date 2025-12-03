@@ -1,0 +1,43 @@
+{
+  "name": "htmx-class-manager",
+  "version": "1.0.0",
+  "description": "HTMX extension for dynamically adding/removing CSS classes based on server responses",
+  "main": "dist/class-manager.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "test": "echo 'No tests specified yet'"
+  },
+  "keywords": [
+    "htmx",
+    "extension",
+    "class",
+    "css",
+    "dom",
+    "manipulation",
+    "server-side",
+    "hypermedia",
+    "hateoas"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecbalarain/htmx-class-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ecbalarain/htmx-class-manager/issues"
+  },
+  "homepage": "https://github.com/ecbalarain/htmx-class-manager#readme",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "htmx.org": "^2.0.0 || ^1.9.0"
+  },
+  "devDependencies": {},
+  "jsdelivr": "dist/class-manager.min.js",
+  "unpkg": "dist/class-manager.min.js"
+}
