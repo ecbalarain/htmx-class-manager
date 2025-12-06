@@ -1,6 +1,6 @@
 {
   "name": "htmx-class-manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "HTMX extension for dynamically adding/removing CSS classes based on server responses",
   "main": "dist/class-manager.js",
   "types": "index.d.ts",
