@@ -23,7 +23,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ecbalarain/htmx-class-manager.git"
+    "url": "git+https://github.com/ecbalarain/htmx-class-manager.git"
   },
   "bugs": {
     "url": "https://github.com/ecbalarain/htmx-class-manager/issues"
